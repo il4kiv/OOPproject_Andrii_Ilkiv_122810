@@ -1,5 +1,7 @@
 package Code.Destinations;
-public abstract class Destination {
+import java.io.Serializable;
+
+public abstract class Destination implements Serializable {
     private final String name;
     private final double baseCost;
 

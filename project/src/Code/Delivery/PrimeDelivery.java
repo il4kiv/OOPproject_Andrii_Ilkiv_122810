@@ -1,9 +1,9 @@
 package Code.Delivery;
-
 import Code.Destinations.Destination;
 import Code.Parcel.Parcel;
+import java.io.Serializable;
 
-public class PrimeDelivery extends DeliveryOption {
+public class PrimeDelivery extends DeliveryOption implements Serializable{
     public PrimeDelivery() {
         super(15, 20);
     }
@@ -15,5 +15,9 @@ public class PrimeDelivery extends DeliveryOption {
             cost += fragileCost;
         }
         return cost;
+    }
+
+    public void updateDeliveryStatus(String newStatus, String newLocation) {
+        deliveryStatus = new DeliveryStatus(newStatus, newLocation);
     }
 }

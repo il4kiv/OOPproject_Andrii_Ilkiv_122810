@@ -1,6 +1,8 @@
 package Code.Parcel;
 
-public class SmallParcel extends Parcel {
+import java.io.Serializable;
+
+public class SmallParcel extends Parcel implements Serializable {
     public SmallParcel(double weight, boolean fragile) {
         super(weight, fragile);
     }

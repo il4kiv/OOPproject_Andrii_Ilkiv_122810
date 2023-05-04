@@ -1,21 +1,12 @@
 package Code.Interfaces;
-import Code.Delivery.DeliveryOption;
-import Code.Delivery.PrimeDelivery;
-import Code.Delivery.StandartDelivery;
-import Code.Destinations.AmericaDestination;
-import Code.Destinations.AsiaDestination;
-import Code.Destinations.Destination;
-import Code.Destinations.EuropeDestination;
-import Code.Parcel.BigParcel;
-import Code.Parcel.Parcel;
-import Code.Parcel.SmallParcel;
-
+import Code.Delivery.*;
+import Code.Destinations.*;
+import Code.Parcel.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
-public class interfaceSmallParcel extends JFrame implements ActionListener {
+public class interfaceSmallParcel extends JFrame implements ActionListener, exceptionInterface {
 
     private final JLabel costLabel;
     private final JTextField weightField;
@@ -82,7 +73,6 @@ public class interfaceSmallParcel extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
         double weight = Double.parseDouble(weightField.getText());
         boolean fragile = fragileYes.isSelected();
         int destinationIndex = destinationBox.getSelectedIndex();

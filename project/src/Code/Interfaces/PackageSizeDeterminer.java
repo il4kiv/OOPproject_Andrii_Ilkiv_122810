@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PackageSizeDeterminer extends JFrame implements ActionListener {
+public class PackageSizeDeterminer extends JFrame implements ActionListener, exceptionInterface{
 
     private final JTextField heightField;
     private final JTextField widthField;
@@ -27,7 +27,7 @@ public class PackageSizeDeterminer extends JFrame implements ActionListener {
         heightPanel.add(heightField);
         container.add(heightPanel);
 
-        JLabel widthLabel = new JLabel("Enter width  (in cm):");
+        JLabel widthLabel = new JLabel("Enter  width  (in cm):");
         widthField = new JTextField(10);
         JPanel widthPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         widthPanel.add(widthLabel);
@@ -69,15 +69,22 @@ public class PackageSizeDeterminer extends JFrame implements ActionListener {
         double length = Double.parseDouble(lengthField.getText());
 
         if (height <= 50 && width <= 50 && length <= 50) {
+            printMessage(String.valueOf(height));
+            printMessage(String.valueOf(width));
+            printMessage(String.valueOf(length));
             JOptionPane.showMessageDialog(this, "Your package is small");
             dispose();
             interfaceSmallParcel actionWindow = new interfaceSmallParcel();
             actionWindow.setVisible(true);
         } else {
+            printMessage(String.valueOf(height));
+            printMessage(String.valueOf(width));
+            printMessage(String.valueOf(length));
             JOptionPane.showMessageDialog(this, "Your package is big");
             dispose();
             interfaceBigParcel actionWindow = new interfaceBigParcel();
-            //actionWindow.setVisible(true);
+            actionWindow.setVisible(true);
+
         }
     }
 }

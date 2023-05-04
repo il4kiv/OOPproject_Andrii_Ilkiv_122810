@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AccessToSystem extends JFrame implements ActionListener {
+
+public class AccessToSystem extends JFrame implements ActionListener, exceptionInterface  {
     private JLabel logo;
     JTextField userTextField = new JTextField();
     JPasswordField passwordField = new JPasswordField();
@@ -12,7 +13,7 @@ public class AccessToSystem extends JFrame implements ActionListener {
     JButton resetButton = new JButton("Reset");
     JCheckBox showPassword = new JCheckBox("Show Password");
 
-    public AccessToSystem() {
+    public AccessToSystem () {
 
         Container container = getContentPane();
         JLabel userLabel = new JLabel("Username:");
@@ -80,6 +81,12 @@ public class AccessToSystem extends JFrame implements ActionListener {
             } else {
                 passwordField.setEchoChar('*');
             }
+        }
+    }
+    private class toConsole implements exceptionInterface{
+        @Override
+        public void printMessage(String message) {
+            exceptionInterface.super.printMessage(message);
         }
     }
 

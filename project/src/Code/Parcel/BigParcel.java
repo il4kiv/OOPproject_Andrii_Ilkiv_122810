@@ -1,6 +1,7 @@
 package Code.Parcel;
+import java.io.Serializable;
 
-public class BigParcel extends Parcel {
+public class BigParcel extends Parcel implements Serializable {
     public BigParcel(double weight, boolean fragile) {
         super(weight, fragile);
     }
