@@ -70,6 +70,7 @@ public class interfaceSmallParcel extends JFrame implements ActionListener, exce
         container.add(costPanel);
         setVisible(true);
         setLocationRelativeTo(null);
+        System.out.println(getClass());
     }
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -79,6 +80,12 @@ public class interfaceSmallParcel extends JFrame implements ActionListener, exce
 
         DeliveryOption deliveryOption;
         if (optionBox.getSelectedIndex() == 0) {
+            if (weight > 100) {
+                costLabel.setText("Shipping can only be Prime Delivery for packages over 100kg.");
+                costLabel.setForeground(Color.RED);
+                return;
+            }
+            costLabel.setForeground(Color.black);
             deliveryOption = new StandartDelivery();
         } else {
             deliveryOption = new PrimeDelivery();
@@ -95,7 +102,7 @@ public class interfaceSmallParcel extends JFrame implements ActionListener, exce
         if (destinationIndex == 0) {
             destination = new EuropeDestination();
         } else if (destinationIndex == 1) {
-            destination = new AmericaDestination();
+            destination = new SouthAmerica();
         } else {
             destination = new AsiaDestination();
         }

@@ -17,7 +17,4 @@ public class PrimeDelivery extends DeliveryOption implements Serializable{
         return cost;
     }
 
-    public void updateDeliveryStatus(String newStatus, String newLocation) {
-        deliveryStatus = new DeliveryStatus(newStatus, newLocation);
-    }
 }

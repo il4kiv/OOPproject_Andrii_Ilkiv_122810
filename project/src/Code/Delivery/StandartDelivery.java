@@ -2,10 +2,10 @@ package Code.Delivery;
 
 import Code.Destinations.Destination;
 import Code.Parcel.Parcel;
+import java.io.*;
 
-import java.io.Serializable;
+public class StandartDelivery extends DeliveryOption implements Serializable {
 
-public class StandartDelivery extends DeliveryOption implements Serializable{
     public StandartDelivery() {
         super(0, 10);
     }
@@ -17,9 +17,5 @@ public class StandartDelivery extends DeliveryOption implements Serializable{
             cost += fragileCost;
         }
         return cost;
-    }
-
-    public void updateDeliveryStatus(String newStatus, String newLocation) {
-        deliveryStatus = new DeliveryStatus(newStatus, newLocation);
     }
 }

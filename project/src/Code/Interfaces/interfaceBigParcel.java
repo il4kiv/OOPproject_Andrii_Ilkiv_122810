@@ -2,8 +2,7 @@ package Code.Interfaces;
 
 import Code.Delivery.DeliveryOption;
 import Code.Delivery.PrimeDelivery;
-import Code.Delivery.StandartDelivery;
-import Code.Destinations.AmericaDestination;
+import Code.Destinations.SouthAmerica;
 import Code.Destinations.AsiaDestination;
 import Code.Destinations.Destination;
 import Code.Destinations.EuropeDestination;
@@ -20,7 +19,6 @@ public class interfaceBigParcel extends JFrame implements ActionListener, except
 
         private final JLabel costLabel;
         private final JTextField weightField;
-        private final JComboBox<String> optionBox;
         private final JComboBox<String> destinationBox;
         private final JRadioButton fragileYes;
 
@@ -38,15 +36,7 @@ public class interfaceBigParcel extends JFrame implements ActionListener, except
             weightPanel.add(weightField);
             container.add(weightPanel);
 
-            JLabel optionLabel = new JLabel("Select delivery option:");
-            String[] options = {"Standard Delivery", "Prime Delivery"};
-            optionBox = new JComboBox<>(options);
-            JPanel optionPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-            optionPanel.add(optionLabel);
-            optionPanel.add(optionBox);
-            container.add(optionPanel);
-
-            JLabel fragileLabel = new JLabel("Is the package fragile?");
+            JLabel fragileLabel = new JLabel("Is the price of the package more than 10000$ ?");
             fragileYes = new JRadioButton("Yes");
             JRadioButton fragileNo = new JRadioButton("No");
             ButtonGroup fragileGroup = new ButtonGroup();
@@ -80,6 +70,7 @@ public class interfaceBigParcel extends JFrame implements ActionListener, except
             container.add(costPanel);
             setVisible(true);
             setLocationRelativeTo(null);
+            System.out.println(getClass());
         }
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -89,11 +80,7 @@ public class interfaceBigParcel extends JFrame implements ActionListener, except
             int destinationIndex = destinationBox.getSelectedIndex();
 
             DeliveryOption deliveryOption;
-            if (optionBox.getSelectedIndex() == 0) {
-                deliveryOption = new StandartDelivery();
-            } else {
-                deliveryOption = new PrimeDelivery();
-            }
+            deliveryOption = new PrimeDelivery();
 
             Parcel parcel;
             if (weight <= 1) {
@@ -106,7 +93,7 @@ public class interfaceBigParcel extends JFrame implements ActionListener, except
             if (destinationIndex == 0) {
                 destination = new EuropeDestination();
             } else if (destinationIndex == 1) {
-                destination = new AmericaDestination();
+                destination = new SouthAmerica();
             } else {
                 destination = new AsiaDestination();
             }
