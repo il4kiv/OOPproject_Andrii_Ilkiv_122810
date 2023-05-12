@@ -84,7 +84,7 @@ public class interfaceSmallParcel extends JFrame implements ActionListener, exce
                 costLabel.setText("Shipping can only be Prime Delivery for packages over 100kg.");
                 costLabel.setForeground(Color.RED);
                 return;
-            }
+            } // vynemku
             costLabel.setForeground(Color.black);
             deliveryOption = new StandartDelivery();
         } else {

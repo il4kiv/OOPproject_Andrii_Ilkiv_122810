@@ -62,14 +62,13 @@ public class PackageSizeDeterminer extends JFrame implements ActionListener, exc
         setLocationRelativeTo(null);
     }
         /////////////////  multithreading under
-
         @Override
         public void actionPerformed(ActionEvent e) {
         if (heightField.getText().isEmpty() || widthField.getText().isEmpty() || lengthField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Enter full size!");
             return;
         }
-
+            // RTTI
             System.out.println(getClass());
 
         double height = Double.parseDouble(heightField.getText());
