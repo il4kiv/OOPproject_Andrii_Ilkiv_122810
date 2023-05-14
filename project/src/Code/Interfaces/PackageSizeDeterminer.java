@@ -86,8 +86,7 @@ public class PackageSizeDeterminer extends JFrame implements ActionListener, exc
         double height = Double.parseDouble(heightField.getText());
         double width = Double.parseDouble(widthField.getText());
         double length = Double.parseDouble(lengthField.getText());
-
-        // Creating a SwingWorker to perform the computation in the background thread
+        // Creatng a SwingWorker to perform the computation in the background thread
         new SwingWorker() {
             public Object doInBackground() {
                 if (height <= 50 && width <= 50 && length <= 50) {

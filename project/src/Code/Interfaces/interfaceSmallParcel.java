@@ -109,11 +109,9 @@ public class interfaceSmallParcel extends JFrame implements ActionListener, exce
                 }
             }
             costLabel.setForeground(Color.BLACK);
-            deliveryOption = new StandartDelivery();
-            createDeliveryOption("standart");
+            deliveryOption = createDeliveryOption("standart");
         } else {
-            deliveryOption = new PrimeDelivery();
-            createDeliveryOption("prime");
+            deliveryOption = createDeliveryOption("prime");
         }
 
         Parcel parcel;

@@ -12,7 +12,7 @@ public class StandartDelivery extends DeliveryOption{
      * Constructs a StandardDelivery object with the base cost and fragile cost.
      */
     public StandartDelivery() {
-        super(0, 10);
+        super(null,0, 10);
     }
 
     /**

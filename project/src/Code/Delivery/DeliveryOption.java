@@ -8,6 +8,7 @@ import Code.Parcel.Parcel;
  Represents a delivery option.
  */
 public abstract class DeliveryOption {
+    Parcel parcel;
     protected double baseCost;
     protected double fragileCost;
 
@@ -17,7 +18,8 @@ public abstract class DeliveryOption {
      * @param baseCost     the base cost of the delivery option
      * @param fragileCost  the additional cost for fragile parcels
      */
-    public DeliveryOption(double baseCost, double fragileCost) {
+    public DeliveryOption(Parcel parcel, double baseCost, double fragileCost) {
+        this.parcel = parcel;
         this.baseCost = baseCost;
         this.fragileCost = fragileCost;
     }

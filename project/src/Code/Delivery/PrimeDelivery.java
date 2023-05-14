@@ -6,12 +6,13 @@ import Code.Parcel.Parcel;
  Represents a prime delivery option that extends the DeliveryOption class.
  */
 public class PrimeDelivery extends DeliveryOption{
+    Parcel parcel;
 
     /**
      * Constructs a PrimeDelivery object with the base cost and fragile cost.
      */
     public PrimeDelivery() {
-        super(15, 20);
+        super(null,15, 20);
     }
 
     /**
