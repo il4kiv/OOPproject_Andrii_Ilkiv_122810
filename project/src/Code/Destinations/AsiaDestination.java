@@ -1,7 +1,12 @@
 package Code.Destinations;
-import java.io.Serializable;
 
-public class AsiaDestination extends Destination implements Serializable {
+/**
+ Represents an Asia destination that extends the Destination class.
+ */
+public class AsiaDestination extends Destination {
+    /**
+     * Constructs an AsiaDestination object with the destination name and shipping cost.
+     */
     public AsiaDestination() {
         super("Asia", 10);
     }

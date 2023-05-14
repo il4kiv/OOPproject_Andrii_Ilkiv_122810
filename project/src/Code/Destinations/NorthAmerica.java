@@ -1,7 +1,12 @@
 package Code.Destinations;
-import java.io.Serializable;
 
-public class NorthAmerica extends Destination implements Serializable {
+/**
+ Represents a North America destination that extends the Destination class.
+ */
+public class NorthAmerica extends Destination {
+    /**
+     * Constructs a NorthAmerica object with the destination name and shipping cost.
+     */
     public NorthAmerica() {
         super("North America", 40);
     }

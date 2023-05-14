@@ -6,15 +6,28 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import static Code.Delivery.DeliveryOption.createDeliveryOption;
+
+/**
+ This class represents a graphical user interface for a small parcel package delivery system.
+ It provides the user with options to input the weight, delivery option, fragility, and destination
+ of a package and calculates the shipping cost based on those inputs.
+ */
 public class interfaceSmallParcel extends JFrame implements ActionListener, exceptionInterface {
 
-    private final JLabel costLabel;
-    private final JTextField weightField;
-    private final JComboBox<String> optionBox;
-    private final JComboBox<String> destinationBox;
-    private final JRadioButton fragileYes;
+    protected final JLabel costLabel;
+    protected final JTextField weightField;
+    protected final JComboBox<String> optionBox;
+    protected final JComboBox<String> destinationBox;
+    protected final JRadioButton fragileYes;
 
+    /**
+     * Constructs a new interfaceSmallParcel object by setting the size, title, and layout of the JFrame container.
+     * It also creates input fields for weight, delivery option, fragility, and destination, as well as a button to
+     * calculate the shipping cost and a label to display the calculated cost.
+     */
     public interfaceSmallParcel() {
+        System.out.println(getClass());
         setTitle("Package Delivery System");
         setSize(500, 350);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,7 +62,7 @@ public class interfaceSmallParcel extends JFrame implements ActionListener, exce
         container.add(fragilePanel);
 
         JLabel destinationLabel = new JLabel("Select destination:");
-        String[] destinations = {"Europe", "America", "Asia"};
+        String[] destinations = {"Europe", "North America", "Asia", "Australia", "Africa", "South America"};
         destinationBox = new JComboBox<>(destinations);
         JPanel destinationPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         destinationPanel.add(destinationLabel);
@@ -70,8 +83,14 @@ public class interfaceSmallParcel extends JFrame implements ActionListener, exce
         container.add(costPanel);
         setVisible(true);
         setLocationRelativeTo(null);
-        System.out.println(getClass());
     }
+    /**
+
+     Overrides the actionPerformed method of ActionListener interface to implement the calculation of shipping cost
+     based on user inputs. It retrieves the weight, fragility, and destination inputs and creates new instances of the
+     corresponding classes and interfaces to calculate the shipping cost based on the chosen delivery option.
+     @param e The ActionEvent object representing the event triggered by the user clicking the "Calculate Cost" button.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         double weight = Double.parseDouble(weightField.getText());
@@ -81,14 +100,20 @@ public class interfaceSmallParcel extends JFrame implements ActionListener, exce
         DeliveryOption deliveryOption;
         if (optionBox.getSelectedIndex() == 0) {
             if (weight > 100) {
-                costLabel.setText("Shipping can only be Prime Delivery for packages over 100kg.");
-                costLabel.setForeground(Color.RED);
-                return;
-            } // vynemku
-            costLabel.setForeground(Color.black);
+                try {
+                    throw new localException();
+                } catch (localException ex) {
+                    costLabel.setText(ex.getMessage());
+                    costLabel.setForeground(Color.RED);
+                    return;
+                }
+            }
+            costLabel.setForeground(Color.BLACK);
             deliveryOption = new StandartDelivery();
+            createDeliveryOption("standart");
         } else {
             deliveryOption = new PrimeDelivery();
+            createDeliveryOption("prime");
         }
 
         Parcel parcel;
@@ -102,13 +127,18 @@ public class interfaceSmallParcel extends JFrame implements ActionListener, exce
         if (destinationIndex == 0) {
             destination = new EuropeDestination();
         } else if (destinationIndex == 1) {
-            destination = new SouthAmerica();
-        } else {
+            destination = new NorthAmerica();
+        } else if (destinationIndex == 2) {
             destination = new AsiaDestination();
+        } else if (destinationIndex == 3) {
+            destination = new Australia();
+        } else if (destinationIndex == 4) {
+            destination = new Africa();
+        } else {
+            destination = new SouthAmerica();
         }
 
         double cost = deliveryOption.calculateCost(parcel, destination);
         costLabel.setText(String.format("Shipping cost: $%.2f", cost));
     }
 }
-
